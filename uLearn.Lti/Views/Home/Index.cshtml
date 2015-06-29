@@ -1,0 +1,63 @@
+﻿@model System.Collections.Specialized.NameValueCollection
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>index</title>
+		<style>
+			table {
+				border-collapse: collapse;
+			}
+			table, th, td {
+				border: 1px solid black;
+			}
+		</style>
+		<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+		<script>
+			function submitScore() {
+				var score = $('#score').val();
+				$.ajax({
+					type: 'GET',
+					url: '@Url.Action("Score")',
+					data: { score: score }
+				})
+					.success(sendScoreToConsumer)
+					.fail(function (res) { showError(res); });
+			}
+
+			function sendScoreToConsumer() {
+				$.ajax({
+					type: 'GET',
+					url: '@Url.Action("SubmitScore")',
+				})
+					.fail(function (res) { showError(res); });
+			}
+
+			function showError(response) {
+				$('#error').text = response.responseText;
+			}
+		</script>
+	</head>
+	<body>
+		<h2>
+			Lti Parameters:
+		</h2>
+		<table>
+			<thead><tr><th>Name</th><th>Value</th><tr></thead>
+			@foreach (var s in Model.AllKeys.OrderBy(s => s))
+			{
+				<tr><td>@s</td><td>@Model.Get(s)</td></tr>
+			}
+		</table>
+		
+		Enter number from range [0, 100]:
+		<input id="score" type="text">
+		<input type="button" onclick="submitScore()" value="Submit" />
+		<p id="error"></p>
+	</body>
+</html>
