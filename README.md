@@ -44,7 +44,10 @@ FullStack инсталляция Edx настроена неправильно �
 TODO:
 Ссылки:
 
-1. На документацию по настройки edx-а для работы с тул-провайдером.
-2. Статьи от автора пакета на C# про LTI.
-3. На LTI стандарт.
-4. На использованные пакеты.
+1. Настройка LTI Module в Edx:  https://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
+2. Сайт автора пакета на C# про LTI: http://andyfmiller.com/
+3. Статья про OAuth в LTI: http://andyfmiller.com/2013/02/10/does-lti-use-oauth/
+3. стандарт LTI v1.1.1: http://www.imsglobal.org/LTI/v1p1p1/ltiIMGv1p1p1.html
+4. LtiLibrary.Core: https://www.nuget.org/packages/LtiLibrary.Core/
+5. LtiLibrary.Owin.Security.Lti: https://www.nuget.org/packages/LtiLibrary.Owin.Security.Lti
+6. LtiLibrary.AspNet.Identity.Owin: https://github.com/andyfmiller/LtiLibrary.Owin
